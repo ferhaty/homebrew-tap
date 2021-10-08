@@ -12,7 +12,7 @@ class Kubescape < Formula
       -s -w
       -X github.com/armosec/kubescape/cmd.BuildNumber=v#{version}
       -X github.com/armosec/kubescape/cautils/getter.ArmoBEURL=api.armo.cloud
-      -X github.com/armosec/kubescape/cautils/getter.ArmoERURL=report.euprod1.cyberarmorsoft.com
+      -X github.com/armosec/kubescape/cautils/getter.ArmoERURL=report.armo.cloud
       -X github.com/armosec/kubescape/cautils/getter.ArmoFEURL=portal.armo.cloud
     ].join(" ")
 
