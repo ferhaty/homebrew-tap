@@ -1,8 +1,8 @@
 class Kubescape < Formula
   desc "Kubernetes testing according to Hardening Guidance by NSA and CISA"
   homepage "https://www.armosec.io/armo-kubescape"
-  url "https://github.com/armosec/kubescape/archive/refs/tags/v1.0.88.tar.gz"
-  sha256 "5d052f1830dcab6e660ca97dade2bcf1b00410197b767060f84f17fcaf43c7cf"
+  url "https://github.com/armosec/kubescape/archive/refs/tags/v1.0.109.tar.gz"
+  sha256 "6527e688b62188679d52a79befd3e77cc13801b87db419963e06d85a3a502bcd"
   license "Apache-2.0"
 
   depends_on "go" => :build
@@ -16,7 +16,6 @@ class Kubescape < Formula
       -X github.com/armosec/kubescape/cautils/getter.ArmoFEURL=portal.armo.cloud
     ].join(" ")
 
-    system "go", "mod", "tidy"
     system "go", "build", *std_go_args(ldflags: ldflags)
 
     output = Utils.safe_popen_read(bin/"kubescape", "completion", "bash")
