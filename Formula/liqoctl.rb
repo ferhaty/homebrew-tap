@@ -29,7 +29,6 @@ class Liqoctl < Formula
     run_output = shell_output("#{bin}/liqoctl 2>&1")
     assert_match "liqoctl is a CLI tool to install and manage Liqo-enabled clusters.", run_output
 
-    ENV["TERM"] = "xterm"
     assert_match "Error", shell_output("#{bin}/liqoctl install kind 2>&1", 1)
     assert_match version.to_s, shell_output("#{bin}/liqoctl version")
   end
