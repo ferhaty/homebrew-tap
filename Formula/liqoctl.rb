@@ -28,10 +28,7 @@ class Liqoctl < Formula
   test do
     run_output = shell_output("#{bin}/liqoctl 2>&1")
     assert_match "liqoctl is a CLI tool to install and manage Liqo-enabled clusters.", run_output
-
-    test_cmd = "liqoctl install eks --region eu-west-1 --eks-cluster-name test 2>&1"
-    run_output = shell_output("#{bin}/#{test_cmd}", 1)
-    assert_match "Error: unable to get cluster test details", run_output
+    assert_empty shell_output("#{bin}/liqoctl install kind 2>&1", 1)
     assert_match version.to_s, shell_output("#{bin}/liqoctl version")
   end
 end
