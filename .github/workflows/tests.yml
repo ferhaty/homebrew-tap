@@ -33,7 +33,7 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae
+      - run: brew test-bot --only-formulae --junit --only-json-tab --skip-dependents --testing-formulae=liqoctl --added-formulae=liqoctl --skip-unbottled-arm --skip-unbottled-linux
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
