@@ -1,22 +1,13 @@
 class Kubescape < Formula
   desc "Kubernetes testing according to Hardening Guidance by NSA and CISA"
-  homepage "https://www.armosec.io/armo-kubescape"
-  url "https://github.com/armosec/kubescape/archive/refs/tags/v1.0.109.tar.gz"
-  sha256 "6527e688b62188679d52a79befd3e77cc13801b87db419963e06d85a3a502bcd"
+  homepage "https://github.com/armosec/kubescape"
+  url "https://github.com/armosec/kubescape/releases/download/v1.0.117/kubescape-macos-latest"
+  sha256 "8574cb24f964adb51223121aed77370f389309d1503fcee041b37894c89b5810"
   license "Apache-2.0"
 
-  depends_on "go" => :build
-
   def install
-    ldflags = %W[
-      -s -w
-      -X github.com/armosec/kubescape/cmd.BuildNumber=v#{version}
-      -X github.com/armosec/kubescape/cautils/getter.ArmoBEURL=api.armo.cloud
-      -X github.com/armosec/kubescape/cautils/getter.ArmoERURL=report.armo.cloud
-      -X github.com/armosec/kubescape/cautils/getter.ArmoFEURL=portal.armo.cloud
-    ].join(" ")
-
-    system "go", "build", *std_go_args(ldflags: ldflags)
+    system "chmod 555 kubescape-macos-latest"
+    bin.install "kubescape-macos-latest" =>  "kubescape"
 
     output = Utils.safe_popen_read(bin/"kubescape", "completion", "bash")
     (bash_completion/"kubescape").write output
